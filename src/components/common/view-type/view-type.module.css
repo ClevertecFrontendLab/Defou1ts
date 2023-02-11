@@ -1,0 +1,32 @@
+.wrapper {
+    background: var(--white);
+    box-shadow: var(--bar-shadow);
+    padding: 9.5px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.active {
+    cursor: auto;
+    background: var(--button-hover);
+}
+.icon {
+    fill: var(--grey-40);
+    width: 19px;
+    height: 19px;
+}
+.active .icon {
+    fill: var(--white);
+}
+.wrapper::hover .icon {
+    fill: var(--button-hover);
+}
+
+@media screen and (max-width: 576px) {
+    .wrapper {
+        padding: 8px;
+    }
+    .icon {
+        width: 16px;
+        height: 16px;
+    }
+}

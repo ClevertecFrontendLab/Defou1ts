@@ -1,0 +1,13 @@
+.slide img {
+    margin: 0px auto;
+}
+.slider {
+    --swiper-navigation-color: #fff;
+    --swiper-pagination-color: #fff;
+}
+.smallSlider {
+    margin-top: 10px;
+}
+.smallSlider .slide {
+    cursor: pointer;
+}

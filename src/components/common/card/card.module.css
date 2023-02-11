@@ -1,0 +1,179 @@
+.card {
+    box-shadow: var(--bar-shadow);
+    border-radius: 10px;
+    display: grid;
+    transition: all 0.2s ease;
+}
+.image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.blank {
+    width: 48px;
+    height: 48px;
+}
+.rating {
+    grid-area: rating;
+    color: var(--grey-40);
+}
+.title {
+    grid-area: title;
+}
+.author {
+    grid-area: author;
+}
+.button {
+    grid-area: button;
+}
+.poster {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-area: poster;
+    border: 1px solid var(--grey-40);
+    background: var(--grey-5);
+}
+.tile {
+    grid-template-columns: 1fr;
+    grid-template-rows: 242px 16px 24px 16px 54px 8px auto 28px 40px;
+    grid-template-areas:
+        'poster'
+        '.'
+        'rating'
+        '.'
+        'title'
+        '.'
+        'author'
+        '.'
+        'button';
+    padding: 8px 8px 16px 8px;
+}
+.tile .poster {
+    border-radius: 10px;
+    justify-self: center;
+    width: 174px;
+    height: 242px;
+}
+.tile .rating {
+    justify-self: left;
+}
+.tile .title {
+    overflow: hidden;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    display: grid;
+    align-items: center;
+    justify-items: left;
+    overflow: hidden;
+}
+.tile .author {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+}
+.tile .button {
+    width: 100%;
+}
+.list {
+    grid-template-columns: 120px 16px 1fr 1fr;
+    grid-template-rows: auto 8px auto 24px 40px;
+    grid-template-areas:
+        'poster . title title'
+        'poster . . .'
+        'poster . author .'
+        'poster . . .'
+        'poster . rating button';
+    padding: 24px 24px 24px 16px;
+}
+.list .poster {
+    border-radius: 3px;
+    width: 120px;
+    height: 170px;
+}
+.list .rating {
+    align-self: center;
+    justify-self: left;
+}
+.list .title {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 32px;
+}
+.list .author {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--grey-70);
+}
+.list .button {
+    width: 174px;
+    justify-self: right;
+}
+
+@media screen and (max-width: 768px) {
+    .list {
+        padding: 16px 24px 16px 16px;
+    }
+    .tile .title {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .list .poster {
+        width: 120px;
+        height: 172px;
+    }
+    .list .title {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 30px;
+        letter-spacing: 0.1px;
+    }
+}
+@media screen and (max-width: 576px) {
+    .list {
+        grid-template-columns: 70px 8px auto auto;
+        grid-template-rows: auto 3px minmax(auto, 54px) 3px 16px 16px 40px;
+        grid-template-areas:
+            'poster . title title'
+            'poster . . .'
+            'poster . author author'
+            'poster . . .'
+            'poster . rating rating'
+            '. . . .'
+            'button button button button';
+        padding: 16px;
+    }
+    .list .title {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .list .author {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .list .poster {
+        width: 70px;
+        height: 100px;
+    }
+    .list .blank {
+        width: 24px;
+        height: 24px;
+    }
+    .list .button {
+        width: 186px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .tile .title {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
+    }
+}

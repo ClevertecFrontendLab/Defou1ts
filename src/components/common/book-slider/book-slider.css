@@ -1,0 +1,20 @@
+.swiper-pagination {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .swiper,
+    .swiper-container {
+        padding-bottom: 26px;
+    }
+    .swiper-pagination {
+        display: block;
+        --swiper-pagination-bottom: 0;
+    }
+    .swiper-pagination-bullet-active {
+        background: var(--dark);
+    }
+}
+
+@media screen and (max-width: 768px) {
+}

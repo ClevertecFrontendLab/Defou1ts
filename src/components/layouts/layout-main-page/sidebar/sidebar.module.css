@@ -1,0 +1,118 @@
+.sidebar {
+}
+.firstLevelMenu {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 42px 0px;
+}
+.firstLevelMenu li {
+    cursor: pointer;
+}
+.active {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.1px;
+    color: #f9690c;
+}
+.firstLevelItem {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.1px;
+    max-width: 255px;
+    padding-right: 17px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+}
+.firstLevelActive {
+    position: relative;
+    margin-bottom: 16px;
+}
+.firstLevelActive::after {
+    content: '';
+    position: absolute;
+    max-width: 255px;
+    width: 100%;
+    background: var(--button-hover);
+    height: 1px;
+    left: 0;
+    bottom: -8px;
+}
+.secondLevelMenu {
+    transition: all 0.2s;
+    margin-left: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px 0px;
+}
+.secondLevelMenu li {
+    display: grid;
+    gap: 6px;
+    grid-template-columns: auto auto;
+    justify-content: left;
+    align-items: center;
+}
+.secondLevelActive {
+    position: relative;
+    /* background: var(--button-hover);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent; */
+    margin-bottom: 16px;
+}
+.category {
+    margin: 0;
+}
+.count {
+    margin-left: 6px;
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--grey-40);
+}
+.icon {
+    cursor: pointer;
+}
+.icon.active {
+    fill: #f9690c;
+}
+.icon.isOpened {
+    transform: rotate(180deg);
+}
+.hr {
+    border: none;
+    margin: 52px -32px 32px -32px;
+    height: 1px;
+    background-color: var(--grey-20);
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        top: 90px;
+        transform: translateX(-120%);
+        position: absolute;
+        background: var(--grey-5);
+        max-width: 502px;
+        width: 100%;
+        z-index: 1;
+        padding: 32px;
+        transition: all 0.2s ease;
+    }
+    .sidebar.opened {
+        transform: translateX(0);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .sidebar {
+        width: calc(100% - 48px);
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .sidebar {
+        width: calc(100% - 32px);
+    }
+}

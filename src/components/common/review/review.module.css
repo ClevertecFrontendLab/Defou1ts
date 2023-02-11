@@ -1,0 +1,55 @@
+.review {
+    display: grid;
+    grid-template-columns: 32px auto 1fr;
+    grid-template-rows: 32px auto auto;
+    align-items: center;
+    gap: 16px 24px;
+    justify-items: flex-start;
+    justify-content: flex-start;
+    grid-template-areas:
+        'icon name date'
+        'rating rating rating'
+        'content content content';
+}
+.icon {
+    grid-area: icon;
+    border-radius: 50%;
+}
+.name {
+    grid-area: name;
+}
+.date {
+    grid-area: date;
+}
+.rating {
+    grid-area: rating;
+}
+.content {
+    grid-area: content;
+}
+.text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+}
+
+@media screen and (max-width: 576px) {
+    .review {
+        display: grid;
+        grid-template-columns: 32px auto 1fr;
+        grid-template-rows: auto 3px auto 8px auto 8px auto;
+        align-items: center;
+        gap: 0px 18px;
+        justify-items: flex-start;
+        justify-content: flex-start;
+        grid-template-areas:
+            'icon name name'
+            'icon . .'
+            'icon date date'
+            '. . .'
+            'rating rating rating'
+            '. . .'
+            'content content content';
+    }
+}

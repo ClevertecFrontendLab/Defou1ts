@@ -1,0 +1,29 @@
+.filled svg {
+    fill: var(--warning);
+}
+.star {
+    display: inline-block;
+}
+.star svg {
+    margin-right: 10px;
+}
+.editable {
+    cursor: pointer;
+}
+.ratingWrapper {
+    max-height: 24px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(5, 1fr);
+    position: relative;
+}
+.error svg {
+    stroke: var(--red);
+}
+.errorMessage {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    color: var(--red);
+}

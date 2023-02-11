@@ -1,0 +1,43 @@
+.wrapper {
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 16px auto;
+    align-items: center;
+    gap: 0px 8px;
+    width: 150px;
+    background: var(--white);
+    border-radius: 30px;
+    box-shadow: var(--bar-shadow);
+    border: none;
+    padding: 0px 16px;
+}
+.icon {
+    fill: var(--grey-40);
+}
+.text {
+    color: var(--grey-40);
+}
+
+@media screen and (max-width: 320px) {
+    .wrapper {
+        width: 32px;
+        padding: 8px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .wrapper {
+        grid-template-columns: auto;
+        width: 32px;
+        height: 32px;
+        align-items: center;
+        justify-content: center;
+    }
+    .icon {
+        width: 16px;
+        height: 16px;
+    }
+    .text {
+        display: none;
+    }
+}

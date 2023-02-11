@@ -1,0 +1,70 @@
+.body {
+  font-weight: 400;
+}
+.body.s {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+}
+.body.l {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+}
+.info {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+}
+.info.s {
+  font-weight: 400;
+}
+.info.l {
+  font-weight: 500;
+}
+.subtitle {
+  font-weight: 600;
+  letter-spacing: 0.1px;
+}
+.subtitle.s {
+  font-size: 14px;
+  line-height: 18px;
+}
+.subtitle.l {
+  font-size: 16px;
+  line-height: 24px;
+}
+.button {
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+.button.s {
+  font-size: 14px;
+  line-height: 18px;
+}
+.button.l {
+  font-size: 16px;
+  line-height: 150%;
+}
+
+@media screen and (max-width: 768px) {
+  .body {
+    letter-spacing: normal;
+  }
+  .body.s {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .body.l {
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+  }
+  .button.s {
+    font-size: 12px;
+  }
+  .button.l {
+    line-height: 20px;
+  }
+}

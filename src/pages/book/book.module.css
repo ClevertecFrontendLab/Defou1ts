@@ -1,0 +1,308 @@
+.bookInfo {
+    display: grid;
+    grid-template-columns: minmax(auto, 445px) 1fr 1fr;
+    grid-template-rows: auto 24px auto 32px auto 62px auto 32px auto;
+    gap: 0px 30px;
+    grid-template-areas:
+        'image title title'
+        'image . .'
+        'image author author'
+        'image . .'
+        'image button button'
+        'image . .'
+        'image titleAbout titleAbout'
+        'image . .'
+        'image description description';
+}
+.image {
+    grid-area: image;
+}
+.title {
+    grid-area: title;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: 0.1px;
+}
+.author {
+    grid-area: author;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.1px;
+    color: var(--grey-40);
+}
+.button {
+    grid-area: button;
+    width: 350px;
+}
+.titleAbout {
+    grid-area: titleAbout;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.1px;
+}
+.description {
+    grid-area: description;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+}
+
+/* Other */
+.subtitle {
+    display: inline-block;
+    margin-top: 62px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+}
+.ratingWrapper {
+    display: grid;
+    grid-template-columns: 166px auto;
+    gap: 0px 24px;
+}
+.hr {
+    margin: 16px 0px;
+    max-width: 350px;
+    height: 1px;
+    border: none;
+    color: var(--grey-10);
+    background: var(--grey-10);
+}
+.addInfo {
+    display: grid;
+    grid-template-rows: repeat(5, 24px);
+    grid-template-columns: 1fr 2fr;
+    gap: 16px 30px;
+    grid-auto-flow: column;
+}
+.addInfoItem {
+    display: grid;
+    grid-template-columns: 120px auto;
+    gap: 0px 70px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+.addInfoItem p {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: var(--grey-40);
+}
+.reviewsCount {
+    margin-left: 6px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: var(--grey-40);
+}
+.reviews {
+    display: grid;
+    grid-template-columns: minmax(auto, 730px);
+    gap: 42px 0px;
+}
+.reviewButton {
+    width: 350px;
+    margin-top: 42px;
+}
+.arrowDown {
+    cursor: pointer;
+    margin-left: 29px;
+}
+.arrowDown.active {
+    transform: rotate(180deg);
+    transition: 0.2s ease;
+}
+.blank {
+    background: var(--grey-5);
+    border: 1px solid var(--grey-40);
+    border-radius: 10px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    max-height: 593px;
+}
+.blank svg {
+    width: 36.75px;
+    height: 38.5px;
+}
+
+@media screen and (max-width: 768px) {
+    .bookInfo {
+        grid-template-columns: 136px 1fr 1fr;
+        grid-template-rows: auto 32px auto 32px auto 48px auto 48px auto;
+        gap: 0px 32px;
+        grid-template-areas:
+            'image title title'
+            'image . .'
+            'image author author'
+            'image . .'
+            '. button button'
+            'titleAbout titleAbout titleAbout'
+            'description description description';
+    }
+    .title {
+        font-size: 24px;
+    }
+    .author {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .button {
+        width: 306px;
+    }
+    .titleAbout {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    /* Other */
+    .subtitle {
+        margin-top: 52px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .hr {
+        max-width: 305x;
+    }
+    .addInfo {
+    }
+    .addInfoItem {
+        grid-template-columns: 105px auto;
+        gap: 0px 33px;
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .addInfoItem p {
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .reviewButton {
+        width: 100%;
+    }
+    .blank {
+        max-height: 198px;
+    }
+    .blank svg {
+        width: 21px;
+        height: 22px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .bookInfo {
+        grid-template-columns: 100%;
+        grid-template-rows: 260px 32px auto 8px auto 42px auto 42px auto 16px auto;
+        gap: 0px 32px;
+        grid-template-areas:
+            'image'
+            '.'
+            'title'
+            '.'
+            'author'
+            '.'
+            'button'
+            '.'
+            'titleAbout'
+            '.'
+            'description';
+    }
+    .image {
+        min-width: 188px;
+        max-height: 260px;
+    }
+    .image.once {
+        justify-self: center;
+    }
+    .image img {
+        max-height: 260px;
+    }
+    .image svg {
+        max-height: 260px;
+    }
+    .title {
+        font-size: 18px;
+        line-height: 28px;
+    }
+    .author {
+        font-weight: 400;
+        font-size: 12px;
+        letter-spacing: normal;
+    }
+    .button {
+        width: 100%;
+        height: 40px;
+    }
+    .button p {
+        font-size: 12px !important;
+        line-height: 18px;
+    }
+    .titleAbout {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 28px;
+    }
+    .description {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    /* Other */
+    .subtitle {
+        margin-top: 42px;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 28px;
+    }
+    .hr {
+        max-width: 100%;
+    }
+    .addInfo {
+        display: grid;
+        grid-template-rows: repeat(9, auto);
+        grid-template-columns: 1fr;
+        gap: 16px 30px;
+        grid-auto-flow: column;
+    }
+    .addInfoItem {
+        display: grid;
+        grid-template-columns: 90px auto;
+        gap: 0px 39px;
+        font-size: 12px;
+        line-height: 16px;
+    }
+    .addInfoItem p {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 0.2px;
+        color: var(--grey-40);
+    }
+    .reviews {
+        gap: 32px 0px;
+    }
+    .reviewButton {
+        margin-top: 32px;
+        height: 40px;
+    }
+    .reviewButton p {
+        font-size: 12px !important;
+        line-height: 18px;
+    }
+    .blank {
+        max-height: 260px;
+    }
+    .blank svg {
+        width: 31.5px;
+        height: 33px;
+    }
+}

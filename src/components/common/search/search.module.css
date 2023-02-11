@@ -1,0 +1,71 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 16px;
+    border-radius: 599px;
+    box-shadow: var(--bar-shadow);
+    padding: 8px;
+    width: 32px;
+    align-items: center;
+    gap: 0px 8px;
+    transition: all 0.2s ease;
+}
+.wrapper.isOpened {
+    max-width: 350px;
+    width: 100%;
+    padding: 10px 0px 10px 16px auto;
+    overflow: hidden;
+    grid-template-columns: 16px auto;
+    align-items: center;
+    position: relative;
+}
+.input {
+    display: none;
+}
+.wrapper.isOpened .input {
+    display: inline-block;
+    border: none;
+    outline: none;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: var(--grey-40);
+}
+.search {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    fill: var(--grey-40);
+}
+.close {
+    position: absolute;
+    right: 11.33px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    fill: var(--grey-40);
+    width: 16px;
+    height: 16px;
+    opacity: 0;
+    cursor: auto;
+    animation: blur 1s;
+    justify-self: right;
+}
+.focus .close {
+    fill: #f9690c;
+    opacity: 1;
+    display: block;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 576px) {
+    .wrapper.isOpened {
+        grid-template-columns: 1fr auto;
+        position: absolute;
+        max-width: 100%;
+        width: 90%;
+        background-color: var(--white);
+    }
+    .wrapper.isOpened .input {
+        width: 100%;
+    }
+}

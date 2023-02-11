@@ -1,0 +1,42 @@
+.main {
+    display: grid;
+    gap: 32px 16px;
+    grid-template-columns: minmax(32px, 350px) 150px minmax(0px, 220px) 38px 38px;
+    grid-template-areas:
+        'search sort . viewTile viewList'
+        'list list list list list';
+    grid-template-rows: 38px auto;
+}
+
+@media screen and (max-width: 576px) {
+    .main {
+        grid-template-columns: 32px 32px auto 32px 32px;
+        gap: 19px 16px;
+        grid-template-rows: 32px auto;
+    }
+}
+.search {
+    grid-area: search;
+}
+.sort {
+    grid-area: sort;
+}
+.viewTile {
+    grid-area: viewTile;
+}
+.viewList {
+    grid-area: viewList;
+}
+.tile {
+    gap: 24px 21.5px;
+    grid-area: list;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, auto));
+    justify-content: space-between;
+}
+.list {
+    grid-area: list;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}

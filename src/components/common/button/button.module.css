@@ -1,0 +1,77 @@
+.button {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    border: none;
+    transition: all 0.2s ease;
+}
+.disabled {
+    cursor: normal;
+    pointer-events: none;
+}
+.s {
+    border-radius: 20px;
+    width: 120px;
+    height: 40px;
+}
+.l {
+    border-radius: 30px;
+    width: 160px;
+    height: 52px;
+}
+.primary {
+    color: var(--white);
+    background: var(--button-hover);
+}
+.primary:hover {
+    border: 1px solid #ff740f;
+    box-shadow: var(--button-shadow);
+}
+.primary:active {
+    box-shadow: var(--pressed-shadow);
+}
+.primary.disabled {
+    background: var(--grey-10);
+    color: var(--white);
+}
+.secondary {
+    background: var(--white);
+    border: 1px solid var(--grey-20);
+}
+.secondary:hover {
+    border: 1px solid var(--grey-40);
+    box-shadow: var(--button-shadow);
+}
+.secondary:active {
+    box-shadow: var(--pressed-shadow);
+}
+.secondary.disabled {
+    color: var(--grey-40);
+    background: var(--grey-5);
+}
+.text {
+    height: auto;
+    width: auto;
+    grid-template-columns: 1fr 18px;
+    gap: 0px 12px;
+    border-radius: 0;
+    background: transparent;
+}
+.text .arrow path {
+    stroke: var(--grey-20);
+}
+.text:hover .arrow path {
+    stroke: var(--dark);
+}
+.text:active {
+    background: var(--button-pressed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+.text:active .arrow path {
+    stroke: var(--button-hover);
+}

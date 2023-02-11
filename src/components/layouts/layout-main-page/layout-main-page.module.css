@@ -1,0 +1,15 @@
+.layout {
+    display: grid;
+    grid-template-columns: minmax(255px, 279px) auto;
+    gap: 0 6px;
+}
+
+@media screen and (max-width: 768px) {
+    .layout {
+        display: grid;
+        grid-template-columns: auto;
+    }
+    .sidebar {
+        display: none;
+    }
+}

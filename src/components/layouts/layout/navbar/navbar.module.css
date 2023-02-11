@@ -1,0 +1,36 @@
+.navBar {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1110px) auto;
+    grid-template-areas: '. text .';
+    padding: 20px 64px;
+    background: var(--grey-5);
+}
+.text {
+    grid-area: text;
+    color: var(--grey-40);
+    justify-content: left;
+    gap: 0px 4px;
+}
+.divider {
+    position: relative;
+    top: 6px;
+}
+
+@media screen and (max-width: 768px) {
+    .navBar {
+        grid-template-columns: 64px minmax(0, 1fr) 64px;
+        padding: 20px 0px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .navBar {
+        grid-template-columns: 24px minmax(0, 1fr) 24px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .navBar {
+        grid-template-columns: 16px minmax(0, 1fr) 16px;
+    }
+}
