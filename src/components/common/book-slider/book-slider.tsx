@@ -5,6 +5,7 @@ import { Pagination, Thumbs } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperClass from 'swiper/types/swiper-class';
 
+import { baseUrl } from 'api/cleverland-api';
 import { BookSliderProps } from './book-slider.props';
 
 import styles from './book-slider.module.css';
@@ -15,14 +16,14 @@ import 'swiper/css/thumbs';
 
 import './book-slider.css';
 
-export const BookSlider = ({ posters }: BookSliderProps) => {
+export const BookSlider = ({ images }: BookSliderProps) => {
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass>();
     const { isMobile } = useMobile();
 
-    const renderedSlides = posters.map((poster, index) => (
+    const renderedSlides = images.map((url, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <SwiperSlide data-test-id='slide-mini' key={index} className={styles.slide}>
-            <img src={poster} alt='Book' />
+            <img src={baseUrl + url} alt='Book' />
         </SwiperSlide>
     ));
 

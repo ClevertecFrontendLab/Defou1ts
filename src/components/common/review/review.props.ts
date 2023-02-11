@@ -1,6 +1,6 @@
 import React from 'react';
-import { Review } from '@types';
+import { Comment } from '@types';
 
 export interface ReviewProps extends React.HTMLAttributes<HTMLDivElement> {
-    review: Review;
+    review: Comment;
 }

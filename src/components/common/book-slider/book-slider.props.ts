@@ -1,3 +1,5 @@
+import { Image } from '@types';
+
 export interface BookSliderProps {
-    posters: string[];
+    images: Image[];
 }

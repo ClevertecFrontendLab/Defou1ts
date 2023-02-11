@@ -1,15 +1,25 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Book, View } from '@types';
+import { BookMany, View } from '@types';
+import { useGetBooksQuery } from 'api/cleverland-api';
 import { Card, Search, Sort, ViewType } from 'components';
-import { mockedBooks } from 'mocks/mock';
 
 import styles from './main.module.css';
 
 export const MainPage = () => {
     const [viewType, setViewType] = useState<View>('list');
 
+    const { data: books, isFetching, isLoading, isError } = useGetBooksQuery();
+
     const { category } = useParams();
+
+    if (isLoading) {
+        return <p>Loading</p>;
+    }
+
+    if (!books) {
+        return <p>Loading</p>;
+    }
 
     return (
         <section className={styles.main}>
@@ -31,7 +41,7 @@ export const MainPage = () => {
             />
 
             <div className={styles[viewType]}>
-                {mockedBooks.map((book: Book) => (
+                {books.map((book: BookMany) => (
                     <Card key={book.id} viewType={viewType} book={book} />
                 ))}
             </div>

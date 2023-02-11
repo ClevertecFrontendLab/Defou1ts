@@ -1,8 +1,7 @@
-import React from 'react';
-import { Book, View } from 'types';
+import { BookMany, View } from 'types';
 
 export interface CardProps {
     viewType: View;
-    book: Book;
+    book: BookMany;
     className?: string;
 }

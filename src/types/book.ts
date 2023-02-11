@@ -1,38 +1,87 @@
-import React from 'react';
+export interface BookMany {
+    issueYear: string;
+    rating?: number;
+    title: string;
+    authors: string[];
+    image: Image;
+    categories: string[];
+    id: number;
+    booking: Booking | null;
+    delivery: Delivery | null;
+    histories: History[] | null;
+}
 
-export type SVGComponent = React.FunctionComponent<React.SVGProps<SVGSVGElement> & { title?: string }>;
-
-export interface AddInfo {
-    publisher: string;
-    year: number;
-    pages: number;
-    binding: string;
+export interface BookOne {
+    id: number;
+    title: string;
+    rating: number;
+    issueYear: string;
+    description: string;
+    publish: string;
+    pages: string;
+    cover: string;
+    weight: string;
     format: string;
-    genre: string;
-    weight: number;
     ISBN: string;
     producer: string;
+    authors: string[];
+    images: Image[];
+    categories: string[];
+    comments: Comment[];
+    booking: Booking;
+    delivery: Delivery;
+    histories: History[];
 }
 
-export interface Review {
-    id: string;
-    name: string;
-    surname: string;
-    date: Date;
-    icon: string;
+export interface BookApiError {
+    data: null;
+    error: {
+        status: number;
+        name: string;
+        message: string;
+        detailks: object;
+    };
+}
+
+export interface Delivery {
+    id: number;
+    handed: boolean;
+    dateHandedFrom: Date;
+    dateHandedTo: Date;
+    recipientId: number;
+    recipientFirstName: string;
+    recipientLastName: string;
+}
+
+export interface Comment {
+    id: number;
     rating: number;
-    content?: string;
+    text: string;
+    createdAt: Date;
+    user: CommentUser;
 }
 
-export interface Book {
-    posters?: string[];
-    title: string;
-    author: string;
-    booked?: boolean;
-    bookEnd?: Date;
-    description: string;
-    rating?: number;
-    addInfo: AddInfo;
-    reviews: Review[];
-    id: string;
+export interface CommentUser {
+    commentUserId: number;
+    firstName: string;
+    lastName: string;
+    avatarUrl: string;
+}
+
+export interface Image {
+    url: string;
+}
+
+export interface Booking {
+    id: number;
+    order: boolean;
+    dateOrder: Date;
+    customerId: number;
+    customerFirstName: string;
+    customerLastName: string;
+}
+
+export interface History {
+    id: number;
+    userId: number;
 }

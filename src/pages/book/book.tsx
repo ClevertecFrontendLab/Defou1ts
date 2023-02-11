@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { hostUrl, useGetBookQuery } from 'api/cleverland-api';
 import { ReactComponent as BlankCat } from 'assets/icons/blankCat.svg';
 import { ReactComponent as ArrowDown } from 'assets/icons/chevron/arrowDown.svg';
 import cn from 'classnames';
 import { BookSlider, Button, Htag, Rating, Review } from 'components';
-import { motion } from 'framer-motion';
-import { mockedBooks } from 'mocks/mock';
 
 import styles from './book.module.css';
 
@@ -14,21 +13,30 @@ export const BookPage = () => {
 
     const [isOpenedReviews, setIsOpenedReviews] = useState<boolean>(false);
 
-    const book = mockedBooks.filter((b) => b.id === bookId)[0];
-    const thruncatedRating = Math.trunc(book.rating ?? 0);
+    const { data: book, isFetching, isLoading, isError } = useGetBookQuery(bookId as string);
+
+    const thruncatedRating = Math.trunc(book?.rating ?? 0);
+
+    if (isLoading) {
+        return <p>Loading</p>;
+    }
+
+    if (!book) {
+        return <p>Loading</p>;
+    }
 
     // eslint-disable-next-line no-negated-condition
-    const renderedImage = !book.posters ? (
+    const renderedImage = !book.images ? (
         <div className={cn(styles.image, styles.blank, styles.once)}>
             <BlankCat />
         </div>
-    ) : book.posters.length === 1 ? (
+    ) : book.images.length === 1 ? (
         <div className={cn(styles.image, styles.once)}>
-            <img src={book.posters[0]} alt='Boook' />
+            <img src={hostUrl + book.images[0].url} alt='Boook' />
         </div>
     ) : (
         <div className={styles.image}>
-            <BookSlider posters={book.posters} />
+            <BookSlider images={book.images} />
         </div>
     );
 
@@ -38,7 +46,7 @@ export const BookPage = () => {
                 {renderedImage}
                 <h3 className={styles.title}>{book.title}</h3>
                 <p className={styles.author}>
-                    {book.author}, {book.addInfo.year}
+                    {book.authors}, {book.issueYear}
                 </p>
                 <Button className={styles.button} type='primary' size='l'>
                     Забронировать
@@ -56,45 +64,45 @@ export const BookPage = () => {
             <ul className={styles.addInfo}>
                 <li className={styles.addInfoItem}>
                     <p className={styles.addInfoType}>Издательство</p>
-                    {book.addInfo.publisher}
+                    {book.publish}
                 </li>
                 <li className={styles.addInfoItem}>
                     <p className={styles.addInfoType}>Год издания</p>
-                    {book.addInfo.year}
+                    {book.issueYear}
                 </li>
                 <li className={styles.addInfoItem}>
                     <p className={styles.addInfoType}>Страниц</p>
-                    {book.addInfo.pages}
+                    {book.pages}
                 </li>
                 <li className={styles.addInfoItem}>
                     <p className={styles.addInfoType}>Переплёт</p>
-                    {book.addInfo.binding}
+                    {book.cover}
                 </li>
                 <li className={styles.addInfoItem}>
                     <p className={styles.addInfoType}>Формат</p>
-                    {book.addInfo.format}
+                    {book.format}
                 </li>
                 <li className={styles.addInfoItem}>
                     <p className={styles.addInfoType}>Жанр</p>
-                    {book.addInfo.genre}
+                    {book.categories}
                 </li>
                 <li className={styles.addInfoItem}>
                     <p className={styles.addInfoType}>Вес</p>
-                    {book.addInfo.weight}
+                    {book.weight}
                 </li>
                 <li className={styles.addInfoItem}>
                     <p className={styles.addInfoType}>ISBN</p>
-                    {book.addInfo.ISBN}
+                    {book.ISBN}
                 </li>
                 <li className={styles.addInfoItem}>
                     <p className={styles.addInfoType}>Изготовитель</p>
-                    {book.addInfo.producer}
+                    {book.producer}
                 </li>
             </ul>
-            {book.reviews.length && (
+            {book.comments?.length && (
                 <React.Fragment>
                     <h5 className={styles.subtitle}>Отзывы</h5>{' '}
-                    <span className={styles.reviewsCount}>{book.reviews.length}</span>
+                    <span className={styles.reviewsCount}>{book.comments.length}</span>
                     <ArrowDown
                         data-test-id='button-hide-reviews'
                         onClick={() => setIsOpenedReviews(!isOpenedReviews)}
@@ -107,8 +115,8 @@ export const BookPage = () => {
                             <hr className={styles.hr} />
 
                             <div className={styles.reviews}>
-                                {book.reviews.map((review) => (
-                                    <Review key={review.id} review={review} />
+                                {book.comments.map((comment) => (
+                                    <Review key={comment.id} review={comment} />
                                 ))}
                             </div>
                         </React.Fragment>

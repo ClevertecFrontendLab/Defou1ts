@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
+import { baseUrl, hostUrl } from 'api/cleverland-api';
 import catIcon from 'assets/icons/cat.png';
 import cn from 'classnames';
 import { Button, Rating, Text } from 'components';
@@ -9,13 +10,13 @@ import { CardProps } from './cards.props';
 import styles from './card.module.css';
 
 export const Card = ({ book, viewType, className }: CardProps) => {
-    const posterUrl = book.posters ? book.posters[0] : catIcon;
+    const posterUrl = book.image ? book.image.url : catIcon;
     const thruncatedRating = Math.trunc(book.rating ?? 0);
 
     const { category } = useParams();
 
     const renderButton = () => {
-        switch (book.booked) {
+        switch (book.booking?.order) {
             case false:
                 return (
                     <Button className={styles.button} size='s' type='primary'>
@@ -23,10 +24,10 @@ export const Card = ({ book, viewType, className }: CardProps) => {
                     </Button>
                 );
             case true:
-                if (book.bookEnd) {
+                if (book.delivery?.handed) {
                     return (
                         <Button className={styles.button} size='s' type='secondary' disabled={true}>
-                            Занято до {book.bookEnd.getDay()}.{book.bookEnd.getMonth()}
+                            Занято до {book.delivery.dateHandedTo.getDay()}.{book.delivery.dateHandedTo.getMonth()}
                         </Button>
                     );
                 }
@@ -64,9 +65,9 @@ export const Card = ({ book, viewType, className }: CardProps) => {
             <div className={styles.poster}>
                 <img
                     alt={book.title}
-                    src={posterUrl}
+                    src={hostUrl + posterUrl}
                     className={cn(styles.image, {
-                        [styles.blank]: !book.posters,
+                        [styles.blank]: !book.image,
                     })}
                 />
             </div>
@@ -79,7 +80,7 @@ export const Card = ({ book, viewType, className }: CardProps) => {
             )}
             <p className={styles.title}>{book.title}</p>
             <p className={styles.author}>
-                {book.author}, {book.addInfo.year}
+                {book.authors}, {book.issueYear}
             </p>
             {CardButton}
         </Link>
